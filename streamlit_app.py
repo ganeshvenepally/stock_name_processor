@@ -1,3 +1,5 @@
+import streamlit as st
+
 def process_stock_names(data):
     lines = data.split("\n")
     stock_names = [line.replace("BSE:", "") + ".BO" for line in lines if "BSE:" in line]
