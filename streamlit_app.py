@@ -2,7 +2,8 @@ import streamlit as st
 
 def process_stock_names(data):
     lines = data.split("\n")
-    stock_names = [line.replace("BSE:", "") + ".BO" for line in lines if "BSE:" in line]
+    # Exclude lines that start with "BSE:5" and process the rest
+    stock_names = [line.replace("BSE:", "") + ".BO" for line in lines if "BSE:" in line and not line.startswith("BSE:5")]
     return ", ".join(stock_names)
 
 st.title('Stock Name Processor')
